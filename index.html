@@ -22,12 +22,10 @@
       <p> <strong> This page has been opened <span id="visitCount">0</span> times.</p>
 
     <script>
-        fetch('https://resumecounter55901-d4daatfqcuarbpgh.centralus-01.azurewebsites.net/api/count', { method: 'POST' })
-         .then(r => r.json())
-         .then(data => {
-             document.getElementById('visitCount').textContent = data.count;
-         })
-         .catch(err => console.error('Counter failed:', err));
+        let count = Number(localStorage.getItem('pageOpens')) || 0;
+        count = count + 1;
+        localStorage.setItem('pageOpens', count);
+        document.getElementById('visitCount').textContent = count;
     </script>
     </header>
 
