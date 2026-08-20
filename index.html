@@ -19,13 +19,15 @@
       <p class="contact">(586)-209-2901 &bull; nbrusilow@gmail.com &bull; nbrusilow@proton.me &bull; <a href="https://resume.nicholasbrusilow.com" target="_blank" rel="noopener">resume.nicholasbrusilow.com</a></p>
       <p class="summary">Data scientist with an M.S. in Data Science &amp; Analytics from the University of Missouri and a B.A. in Mathematics from Carleton College (Phi Beta Kappa, Magna Cum Laude). Prior career in education, now transitioning into industry with a foundation in machine learning, predictive modeling, and high-performance computing. Looking for a data science role in the Detroit area &mdash; in-person or hybrid preferred.</p>
 
-      <p> <strong> You have opened this page <span id="visitCount">0</span> times.</p>
+      <p> <strong> This page has been opened <span id="visitCount">0</span> times.</p>
 
     <script>
-        let count = Number(localStorage.getItem('pageOpens')) || 0;
-        count = count + 1;
-        localStorage.setItem('pageOpens', count);
-        document.getElementById('visitCount').textContent = count;
+        fetch('https://resumecounter55901-d4daatfqcuarbpgh.centralus-01.azurewebsites.net/api/count', { method: 'POST' })
+         .then(r => r.json())
+         .then(data => {
+             document.getElementById('visitCount').textContent = data.count;
+         })
+         .catch(err => console.error('Counter failed:', err));
     </script>
     </header>
 
